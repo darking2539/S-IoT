@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TemparatureActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DB83A3"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperature"
+            android:textColor="#D17191"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/celcius_temperature" />
+
+        <TextView
+            android:id="@+id/Temparature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Value"
+            android:textColor="#D17191"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="TIME YY/MM/DD"
+            android:textColor="#D17191"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/Showgraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/sign_up"
+            android:text="Show graph"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/Showlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/sign_up"
+            android:text="Show list"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="193dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/tkclogo" />
+
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
