@@ -1,4 +1,4 @@
-# S-IoT
+# S-IoT (Smart IoT)
 
 This Application is IoT Application connect with Real-time databased on Firebased (With Connect from CAT-LoRaWAN) and application includes
 
@@ -6,7 +6,7 @@ This Application is IoT Application connect with Real-time databased on Firebase
 * Fetch Sensor data value from realtime-databased
 * Java with Android Studio
 
-Photos form this application
+Photos from this application
 
 ![image1](https://user-images.githubusercontent.com/39507608/105279056-5fe7f500-5bd9-11eb-95f2-0364885aee17.png)
 ![image3](https://user-images.githubusercontent.com/39507608/105279058-61192200-5bd9-11eb-9dfc-893efb541d90.png)
