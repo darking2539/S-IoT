@@ -1,0 +1,467 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "FMS API SpecSheet",
+    "description": "API Specification of File Management Services",
+    "contact": {
+      "email": "suphadetvat@gosoft.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://fms-api-copdev.allcorporate.net/api/gw",
+      "description": "dev env"
+    },
+    {
+      "url": "https://fms.allcorporate.net/gw/api/v1",
+      "description": "production env"
+    }
+  ],
+  "tags": [
+    {
+      "name": "AWSServices",
+      "description": "Upload / Download / Deleted / Updated / List"
+    }
+  ],
+  "paths": {
+    "/s3/upload": {
+      "post": {
+        "tags": [
+          "AWSServices"
+        ],
+        "summary": "uploads files",
+        "description": "upload file services",
+        "operationId": "uploadFile",
+        "parameters": [
+          {
+            "name": "fms-x-key",
+            "in": "header",
+            "description": "token key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "createdBy": {
+                    "type": "string"
+                  },
+                  "uploadFile": {
+                    "type": "string",
+                    "description": "Multiple file",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Upload Sucecessful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileCode": {
+                            "type": "string"
+                          },
+                          "fileName": {
+                            "type": "string"
+                          },
+                          "fileType": {
+                            "type": "string"
+                          },
+                          "fileSize": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "statusCode": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "fileCode": "1016032022-6a351e",
+                      "fileName": "image.jpg",
+                      "fileType": "image/jpeg",
+                      "fileSize": 425154,
+                      "message": "Upload File Successful",
+                      "statusCode": 200
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No Token and Basic bad request"
+          },
+          "401": {
+            "description": "Unauthorized from something"
+          }
+        }
+      }
+    },
+    "/s3/download": {
+      "post": {
+        "tags": [
+          "AWSServices"
+        ],
+        "summary": "download files",
+        "description": "dwonload file services",
+        "operationId": "downloadFile",
+        "parameters": [
+          {
+            "name": "fms-x-key",
+            "in": "header",
+            "description": "token key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileCode": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Download file Sucecessful"
+          },
+          "400": {
+            "description": "No Token and Basic bad request"
+          },
+          "401": {
+            "description": "Unauthorized from something"
+          }
+        }
+      }
+    },
+    "/s3/update": {
+      "post": {
+        "tags": [
+          "AWSServices"
+        ],
+        "summary": "update files",
+        "description": "update file services",
+        "operationId": "updateFile",
+        "parameters": [
+          {
+            "name": "fms-x-key",
+            "in": "header",
+            "description": "token key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileCode": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Upload Sucecessful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileCode": {
+                            "type": "string"
+                          },
+                          "fileName": {
+                            "type": "string"
+                          },
+                          "fileType": {
+                            "type": "string"
+                          },
+                          "fileSize": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "statusCode": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "fileCode": "1016032022-6a351e",
+                      "fileName": "image.jpg",
+                      "fileType": "image/jpeg",
+                      "fileSize": 425154,
+                      "message": "Update File Successful",
+                      "statusCode": 200
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No Token and Basic bad request"
+          },
+          "401": {
+            "description": "Unauthorized from something"
+          }
+        }
+      }
+    },
+    "/s3/delete": {
+      "post": {
+        "tags": [
+          "AWSServices"
+        ],
+        "summary": "delete files",
+        "description": "delete file services",
+        "operationId": "deleteFile",
+        "parameters": [
+          {
+            "name": "fms-x-key",
+            "in": "header",
+            "description": "token key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileCode": {
+                    "type": "string",
+                    "description": "Multiple file with comma"
+                  },
+                  "deletedBy": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete Sucecessful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileCode": {
+                            "type": "string"
+                          },
+                          "fileName": {
+                            "type": "string"
+                          },
+                          "fileType": {
+                            "type": "string"
+                          },
+                          "fileSize": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "statusCode": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "fileName": "image.jpg",
+                      "fileSize": 425154,
+                      "isDeleted": true,
+                      "message": "Delete File Successful",
+                      "statusCode": 200
+                    },
+                    {
+                      "fileName": "image2.jpg",
+                      "fileSize": 425154,
+                      "isDeleted": true,
+                      "message": "Delete File Successful",
+                      "statusCode": 200
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No Token and Basic bad request"
+          },
+          "401": {
+            "description": "Unauthorized from something"
+          }
+        }
+      }
+    },
+    "/s3/listFile": {
+      "post": {
+        "tags": [
+          "AWSServices"
+        ],
+        "summary": "list files",
+        "description": "list file services",
+        "operationId": "listFile",
+        "parameters": [
+          {
+            "name": "fms-x-key",
+            "in": "header",
+            "description": "token key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "isDelete": {
+                    "type": "string",
+                    "description": "Multiple file with comma",
+                    "example": "true false all"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete Sucecessful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileCode": {
+                            "type": "string"
+                          },
+                          "fileName": {
+                            "type": "string"
+                          },
+                          "fileType": {
+                            "type": "string"
+                          },
+                          "fileSize": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "statusCode": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "fileName": "image.jpg",
+                      "fileSize": 425154,
+                      "isDeleted": true,
+                      "message": "Delete File Successful",
+                      "statusCode": 200
+                    },
+                    {
+                      "fileName": "image2.jpg",
+                      "fileSize": 425154,
+                      "isDeleted": true,
+                      "message": "Delete File Successful",
+                      "statusCode": 200
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No Token and Basic bad request"
+          },
+          "401": {
+            "description": "Unauthorized from something"
+          }
+        }
+      }
+    }
+  }
+}
